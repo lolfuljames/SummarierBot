@@ -4,11 +4,12 @@ import telepot
 from telepot.loop import MessageLoop
 from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton
 
+#this bot is to test out the features and usage of telepot's API
 
 def on_chat_message(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     global a
-    a=0
+    a=0 #a is to ensure the inline buttons do not exceed screen limit
 
     keyboard = InlineKeyboardMarkup(inline_keyboard=[
                     [dict(text='you could try this though', callback_data='he did it')],
@@ -34,7 +35,7 @@ def on_callback_query(msg):
 
     print (a)
 
-bot = telepot.Bot("402335623:AAG8tMmlN0Kc75VFeNEsPpfrfhAtvRvK4ow")
+bot = telepot.Bot("put your own token")
 MessageLoop(bot, {'chat': on_chat_message,
                   'callback_query': on_callback_query}).run_as_thread()
 print('Listening ...')

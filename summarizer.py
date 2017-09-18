@@ -47,6 +47,5 @@ def textranker(document):
     	if sentence in sentence_list:
     		seq_list.append(sentence)
     summaryString = str(seq_list)
-    print(summaryString)
-    return seq_list
+    return summaryString
 

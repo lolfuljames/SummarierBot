@@ -8,7 +8,7 @@ bot = telepot.Bot("402335623:AAG8tMmlN0Kc75VFeNEsPpfrfhAtvRvK4ow")
 
 
 def startSummarise(chat_id):
-	doc=open("messages.txt","r",encoding='utf-8')
+	doc=open("messages.txt","r")
 	document=doc.read()
 	summaryString=textranker(document)
 	bot.sendMessage(chat_id,summaryString)

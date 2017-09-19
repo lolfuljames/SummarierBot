@@ -11,21 +11,25 @@ def startSummarise(chat_id):
 	doc=open("messages.txt","r")
 	document=doc.read()
 	summaryString=textranker(document)
-	bot.sendMessage(chat_id,summaryString)
+	if summaryString == "[]": #output will be [] if there is not enough data
+		bot.sendMessage(chat_id,"Not enough messages for me to summarise la dei, so few messages also lazy to read ah?")
+	else:
+		bot.sendMessage(chat_id,summaryString)
 
 def handle(msg):
 	content_type , chat_type ,chat_id = telepot.glance(msg)
 	if content_type == "text":
-		if msg["text"] == "/summarise@Testingphase1bot":
+		messageString = msg["text"]
+		if messageString == "/summarise@Testingphase1bot":
 			startSummarise(chat_id)
-		elif msg["text"] == "/clear@Testingphase1bot":
-			store=open("messages.txt","w")
+		elif messageString == "/clear@Testingphase1bot":
+			store=open("messages.txt","w") #rewrites whole file
 			store.write(" ")
 			store.close()
-		else:
+		elif messageString[1] != "/": #ignore messages starting with /
 			chat_id = str(chat_id) 
-			print("received " + msg['text'] + " from " + chat_id )
-			store=open("messages.txt","a")
+			print("received " + messageString + " from " + chat_id )
+			store=open("messages.txt","a") 
 			store.write(msg["text"] + " ")
 			store.close()
 MessageLoop(bot,{"chat":handle}).run_as_thread()

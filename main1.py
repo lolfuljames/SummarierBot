@@ -26,7 +26,7 @@ def handle(msg):
 			store=open("messages.txt","w") #rewrites whole file
 			store.write(" ")
 			store.close()
-		elif messageString[1] != "/": #ignore messages starting with /
+		elif messageString[0] != "/": #ignore messages starting with /
 			chat_id = str(chat_id) 
 			print("received " + messageString + " from " + chat_id )
 			store=open("messages.txt","a") 

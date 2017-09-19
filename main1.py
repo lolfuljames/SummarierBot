@@ -2,7 +2,6 @@ from summarizer import textranker
 import telepot
 from telepot.loop import MessageLoop
 import time
-import math
 
 
 bot = telepot.Bot("402335623:AAG8tMmlN0Kc75VFeNEsPpfrfhAtvRvK4ow")

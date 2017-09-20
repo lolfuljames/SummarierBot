@@ -5,15 +5,15 @@ import time
 import os
 
 
-bot = telepot.Bot("402335623:AAG8tMmlN0Kc75VFeNEsPpfrfhAtvRvK4ow")
+bot = telepot.Bot("423773801:AAEMhmJhn8jdZt9GtJ7xkX-49wJJ9rqeNJo")
 
 
 def startSummarise(chat_id):
-	if not os.path.exists("%s.txt" %(chat_id)):
-		newfile=open("%s.txt" %(chat_id),"w+")
+	if not os.path.exists(chat_id + ".txt"):
+		newfile=open(chat_id + ".txt","w+")
 		newfile.close()
 	else :
-		doc=open("%s.txt" %(chat_id),"r")
+		doc=open(chat_id + ".txt","r")
 		document=doc.read()
 		print (document)
 		summaryString=textranker(document)
@@ -26,14 +26,14 @@ def handle(msg):
 	content_type , chat_type ,chat_id = telepot.glance(msg)
 	if content_type == "text":
 		messageString = msg["text"]
-		if messageString == "/summarise@Testingphase1bot":
+		if messageString == "/summarise":
 			startSummarise(chat_id)
-		elif messageString == "/clear@Testingphase1bot":
-			os.remove("%s.txt" %(chat_id))
+		elif messageString == "/clear":
+			os.remove(chat_id + ".txt")
 		elif messageString[0] != "/": #ignore messages starting with /
 			chat_id = str(chat_id) 
 			print("received " + messageString + " from " + chat_id )
-			store=open("%s.txt" %(chat_id),"a+") 
+			store=open(chat_id + ".txt","a+") 
 			store.write(msg["text"] + " ")
 			store.close()
 MessageLoop(bot,{"chat":handle}).run_as_thread()

@@ -1,4 +1,7 @@
 # telegram-bot-test
+
+## This repository is no longer up-to-date, please refer to https://github.com/jiale1029/SummariseBot 
+
 First code for telegram bots using telepot
 
 This bot is to be added to a telegram group chat and summarise the previous chat messages when required.
@@ -11,3 +14,4 @@ When the summarise command is called, it will summarise the saved messages.
 
 
 There is a local storage version for this bot for non-MySQL users in the txtFileVersionSummariser file. /messages.txt will be the storage area for the messages.
+
